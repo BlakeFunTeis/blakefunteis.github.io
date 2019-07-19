@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blakefunteis.github.io/2019/07/20/Stones/">
+    <link itemprop="mainEntityOfPage" href="https://blakefunteis.github.io/2019/07/20/595-Big-Countries/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Blake">
@@ -252,7 +252,138 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/20/Stones/" itemprop="url">771-Jewels and Stones</a></h1>
+                <a class="post-title-link" href="/2019/07/20/595-Big-Countries/" itemprop="url">595-Big-Countries</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-07-20T02:16:29+08:00">
+                2019-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Write a SQL solution to output big countries’ name, population and area.</p>
+<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.<br>    +————–+————-+————–+<br>    | name         | population  | area         |<br>    +————–+————-+————–+<br>    | Afghanistan  | 25500100    | 652230       |<br>    | Algeria      | 37100000    | 2381741      |<br>    +————–+————-+————–+</p>
+<h2 id="SQL-Schema"><a href="#SQL-Schema" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><pre><code>Create table If Not Exists World (name varchar(255), continent varchar(255), area int, population int, gdp int)
+Truncate table World
+insert into World (name, continent, area, population, gdp) values (&#39;Afghanistan&#39;, &#39;Asia&#39;, &#39;652230&#39;, &#39;25500100&#39;, &#39;20343000000&#39;)
+insert into World (name, continent, area, population, gdp) values (&#39;Albania&#39;, &#39;Europe&#39;, &#39;28748&#39;, &#39;2831741&#39;, &#39;12960000000&#39;)
+insert into World (name, continent, area, population, gdp) values (&#39;Algeria&#39;, &#39;Africa&#39;, &#39;2381741&#39;, &#39;37100000&#39;, &#39;188681000000&#39;)
+insert into World (name, continent, area, population, gdp) values (&#39;Andorra&#39;, &#39;Europe&#39;, &#39;468&#39;, &#39;78115&#39;, &#39;3712000000&#39;)
+insert into World (name, continent, area, population, gdp) values (&#39;Angola&#39;, &#39;Africa&#39;, &#39;1246700&#39;, &#39;20609294&#39;, &#39;100990000000&#39;)</code></pre><h2 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h2><pre><code># Write your MySQL query statement below
+SELECT name, population, area FROM World
+WHERE population &gt; &#39;25000000&#39;
+OR area &gt; &#39;3000000&#39;</code></pre><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/big-countries" title="595. Big Countries" target="_blank" rel="noopener">595. Big Countries</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blakefunteis.github.io/2019/07/20/771-Jewels-and-Stones/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Blake">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blake's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/20/771-Jewels-and-Stones/" itemprop="url">771-Jewels and Stones</a></h1>
         
 
         <div class="post-meta">
@@ -583,7 +714,7 @@ echo &quot;不換的話，中獎的機率:&quot; . $no / $this-&gt;max_player . 
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -596,7 +727,7 @@ echo &quot;不換的話，中獎的機率:&quot; . $no / $this-&gt;max_player . 
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
