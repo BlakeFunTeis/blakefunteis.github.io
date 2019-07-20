@@ -233,6 +233,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://blakefunteis.github.io/2019/07/21/620-Not-Boring-Movies/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Blake">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/image.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blake's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/21/620-Not-Boring-Movies/" itemprop="url">620-Not-Boring-Movies</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-07-21T01:02:44+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>X city opened a new cinema, many people would like to go to this cinema. The cinema also gives out a poster indicating the movies’ ratings and descriptions.</p>
+<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>Please write a SQL query to output movies with an odd numbered ID and a description that is not ‘boring’. Order the result by rating.</p>
+<h2 id="SQL-Schema"><a href="#SQL-Schema" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><pre><code>Create table If Not Exists cinema (id int, movie varchar(255), description varchar(255), rating float(2, 1))
+Truncate table cinema
+insert into cinema (id, movie, description, rating) values (&#39;1&#39;, &#39;War&#39;, &#39;great 3D&#39;, &#39;8.9&#39;)
+insert into cinema (id, movie, description, rating) values (&#39;2&#39;, &#39;Science&#39;, &#39;fiction&#39;, &#39;8.5&#39;)
+insert into cinema (id, movie, description, rating) values (&#39;3&#39;, &#39;irish&#39;, &#39;boring&#39;, &#39;6.2&#39;)
+insert into cinema (id, movie, description, rating) values (&#39;4&#39;, &#39;Ice song&#39;, &#39;Fantacy&#39;, &#39;8.6&#39;)
+insert into cinema (id, movie, description, rating) values (&#39;5&#39;, &#39;House card&#39;, &#39;Interesting&#39;, &#39;9.1&#39;)</code></pre><p>For example, table cinema:</p>
+<pre>
++---------+-----------+--------------+-----------+
+|   id    | movie     |  description |  rating   |
++---------+-----------+--------------+-----------+
+|   1     | War       |   great 3D   |   8.9     |
+|   2     | Science   |   fiction    |   8.5     |
+|   3     | irish     |   boring     |   6.2     |
+|   4     | Ice song  |   Fantacy    |   8.6     |
+|   5     | House card|   Interesting|   9.1     |
++---------+-----------+--------------+-----------+
+</pre>
+<p>For the example above, the output should be:</p>
+<pre>
++---------+-----------+--------------+-----------+
+|   id    | movie     |  description |  rating   |
++---------+-----------+--------------+-----------+
+|   5     | House card|   Interesting|   9.1     |
+|   1     | War       |   great 3D   |   8.9     |
++---------+-----------+--------------+-----------+
+</pre>
+
+<h2 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h2><pre><code># Write your MySQL query statement below
+SELECT id, movie, description, rating FROM cinema
+WHERE description != &#39;boring&#39;
+AND (id % 2) = 1
+order by rating DESC</code></pre><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/not-boring-movies" title="620. Not Boring Movies" target="_blank" rel="noopener">620. Not Boring Movies</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -850,7 +1004,7 @@ echo &quot;不換的話，中獎的機率:&quot; . $no / $this-&gt;max_player . 
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
