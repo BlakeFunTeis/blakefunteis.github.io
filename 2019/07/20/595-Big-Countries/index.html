@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Write a SQL solution to output big countries’ name, population and area. RulesA country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.    +————–+—">
+<meta name="description" content="Write a SQL solution to output big countries’ name, population and area. RulesA country is big if it has an area of bigger than 3 million square km or a population of more than 25 million. +----------">
 <meta name="keywords" content="LeetCode,MySQL,Database">
 <meta property="og:type" content="article">
 <meta property="og:title" content="595-Big-Countries">
 <meta property="og:url" content="https://blakefunteis.github.io/2019/07/20/595-Big-Countries/index.html">
 <meta property="og:site_name" content="Blake&#39;s Blog">
-<meta property="og:description" content="Write a SQL solution to output big countries’ name, population and area. RulesA country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.    +————–+—">
+<meta property="og:description" content="Write a SQL solution to output big countries’ name, population and area. RulesA country is big if it has an area of bigger than 3 million square km or a population of more than 25 million. +----------">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-07-20T09:44:54.844Z">
+<meta property="og:updated_time" content="2019-07-20T17:25:05.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="595-Big-Countries">
-<meta name="twitter:description" content="Write a SQL solution to output big countries’ name, population and area. RulesA country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.    +————–+—">
+<meta name="twitter:description" content="Write a SQL solution to output big countries’ name, population and area. RulesA country is big if it has an area of bigger than 3 million square km or a population of more than 25 million. +----------">
 
 
 
@@ -301,8 +301,13 @@
 
       
         <p>Write a SQL solution to output big countries’ name, population and area.</p>
-<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.<br>    +————–+————-+————–+<br>    | name         | population  | area         |<br>    +————–+————-+————–+<br>    | Afghanistan  | 25500100    | 652230       |<br>    | Algeria      | 37100000    | 2381741      |<br>    +————–+————-+————–+</p>
-<h2 id="SQL-Schema"><a href="#SQL-Schema" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><pre><code>Create table If Not Exists World (name varchar(255), continent varchar(255), area int, population int, gdp int)
+<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.</p>
+<pre><code>+--------------+-------------+--------------+
+| name         | population  | area         |
++--------------+-------------+--------------+
+| Afghanistan  | 25500100    | 652230       |
+| Algeria      | 37100000    | 2381741      |
++--------------+-------------+--------------+</code></pre><h2 id="SQL-Schema"><a href="#SQL-Schema" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><pre><code>Create table If Not Exists World (name varchar(255), continent varchar(255), area int, population int, gdp int)
 Truncate table World
 insert into World (name, continent, area, population, gdp) values (&#39;Afghanistan&#39;, &#39;Asia&#39;, &#39;652230&#39;, &#39;25500100&#39;, &#39;20343000000&#39;)
 insert into World (name, continent, area, population, gdp) values (&#39;Albania&#39;, &#39;Europe&#39;, &#39;28748&#39;, &#39;2831741&#39;, &#39;12960000000&#39;)
@@ -437,7 +442,7 @@ OR area &gt; 3000000</code></pre><h2 id="Reference"><a href="#Reference" class="
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

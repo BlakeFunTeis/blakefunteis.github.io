@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="PHP,LeetCode,">
+  <meta name="keywords" content="LeetCode,MySQL,Database,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="You’re given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the sto">
-<meta name="keywords" content="PHP,LeetCode">
+<meta name="description" content="RulesWrite a SQL query to find all duplicate emails in a table named Person.  +----+---------+ | Id | Email   | +----+---------+ | 1  | a@b.com | | 2  | c@d.com | | 3  | a@b.com | +----+---------+  Fo">
+<meta name="keywords" content="LeetCode,MySQL,Database">
 <meta property="og:type" content="article">
-<meta property="og:title" content="771-Jewels and Stones">
-<meta property="og:url" content="https://blakefunteis.github.io/2019/07/20/771-Jewels-and-Stones/index.html">
+<meta property="og:title" content="182-Duplicate-Emails">
+<meta property="og:url" content="https://blakefunteis.github.io/2019/07/21/182-Duplicate-Emails/index.html">
 <meta property="og:site_name" content="Blake&#39;s Blog">
-<meta property="og:description" content="You’re given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the sto">
+<meta property="og:description" content="RulesWrite a SQL query to find all duplicate emails in a table named Person.  +----+---------+ | Id | Email   | +----+---------+ | 1  | a@b.com | | 2  | c@d.com | | 3  | a@b.com | +----+---------+  Fo">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-07-20T09:42:56.578Z">
+<meta property="og:updated_time" content="2019-07-20T17:24:20.602Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="771-Jewels and Stones">
-<meta name="twitter:description" content="You’re given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the sto">
+<meta name="twitter:title" content="182-Duplicate-Emails">
+<meta name="twitter:description" content="RulesWrite a SQL query to find all duplicate emails in a table named Person.  +----+---------+ | Id | Email   | +----+---------+ | 1  | a@b.com | | 2  | c@d.com | | 3  | a@b.com | +----+---------+  Fo">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://blakefunteis.github.io/2019/07/20/771-Jewels-and-Stones/">
+  <link rel="canonical" href="https://blakefunteis.github.io/2019/07/21/182-Duplicate-Emails/">
 
 
 
 
 
-  <title>771-Jewels and Stones | Blake's Blog</title>
+  <title>182-Duplicate-Emails | Blake's Blog</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://blakefunteis.github.io/2019/07/20/771-Jewels-and-Stones/">
+    <link itemprop="mainEntityOfPage" href="https://blakefunteis.github.io/2019/07/21/182-Duplicate-Emails/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Blake">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">771-Jewels and Stones</h1>
+          <h1 class="post-title" itemprop="name headline">182-Duplicate-Emails</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-07-20T01:42:05+08:00">
-                2019-07-20
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-07-21T01:19:31+08:00">
+                2019-07-21
               </time>
             
 
@@ -300,30 +300,40 @@
       
 
       
-        <p>You’re given strings J representing the types of stones that are jewels, and S representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the stones you have are also jewels.</p>
-<p>The letters in J are guaranteed distinct, and all characters in J and S are letters. Letters are case sensitive, so “a” is considered a different type of stone from “A”.</p>
-<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><pre><code>Input: J = &quot;aA&quot;, S = &quot;aAAbbbb&quot;
-Output: 3
+        <h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>Write a SQL query to find all duplicate emails in a table named Person.</p>
+<pre>
++----+---------+
+| Id | Email   |
++----+---------+
+| 1  | a@b.com |
+| 2  | c@d.com |
+| 3  | a@b.com |
++----+---------+
+</pre>
+<p>For example, your query should return the following for the above table:</p>
+<pre>
++---------+
+| Email   |
++---------+
+| a@b.com |
++---------+
+</pre>
 
-Input: J = &quot;z&quot;, S = &quot;ZZ&quot;
-Output: 0</code></pre><h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><code>S</code> and <code>J</code> will consist of letters and have length at most 50.<br>The characters in <code>J</code> are distinct.</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre><code>class Solution {
-    /**
-    * @param String $J
-    * @param String $S
-    * @return Integer
-    */
-    function numJewelsInStones($J, $S) {
-        $count = 0;
-        $S = str_split($S);
-        $data = array_count_values($S);
-        for($i=0; $i&lt;=strlen($J); $i++) {
-            $count += $data[$J[$i]];
-        }
-        return $count;
-    }
-}</code></pre><p>複雜度為 <strong>O(n)</strong>。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/jewels-and-stones" title="771. Jewels and Stones" target="_blank" rel="noopener">771. Jewels and Stones</a><br><a href="https://github.com/BlakeFunTeis/leetcode-php/blob/master/771-Jewels_and_Stones.php" title="GitHub" target="_blank" rel="noopener">GitHub</a></p>
+<h2 id="SQL-Schema"><a href="#SQL-Schema" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><pre>
+Create table If Not Exists Person (Id int, Email varchar(255))
+Truncate table Person
+insert into Person (Id, Email) values ('1', 'a@b.com')
+insert into Person (Id, Email) values ('2', 'c@d.com')
+insert into Person (Id, Email) values ('3', 'a@b.com')
+</pre>
+
+<h2 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h2><pre>
+SELECT Email FROM Person
+Group by Email
+HAVING count(Email) > 1
+</pre>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/duplicate-emails" title="182. Duplicate Emails" target="_blank" rel="noopener">182. Duplicate Emails</a></p>
 
       
     </div>
@@ -341,9 +351,11 @@ Output: 0</code></pre><h2 id="Note"><a href="#Note" class="headerlink" title="No
       
         <div class="post-tags">
           
-            <a href="/tags/PHP/" rel="tag"># PHP</a>
-          
             <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/Database/" rel="tag"># Database</a>
           
         </div>
       
@@ -356,8 +368,8 @@ Output: 0</code></pre><h2 id="Note"><a href="#Note" class="headerlink" title="No
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/18/使用PHP模擬蒙提霍爾問題/" rel="next" title="使用PHP模擬蒙提霍爾問題">
-                <i class="fa fa-chevron-left"></i> 使用PHP模擬蒙提霍爾問題
+              <a href="/2019/07/21/620-Not-Boring-Movies/" rel="next" title="620-Not-Boring-Movies">
+                <i class="fa fa-chevron-left"></i> 620-Not-Boring-Movies
               </a>
             
           </div>
@@ -365,10 +377,6 @@ Output: 0</code></pre><h2 id="Note"><a href="#Note" class="headerlink" title="No
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/20/595-Big-Countries/" rel="prev" title="595-Big-Countries">
-                595-Big-Countries <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -509,7 +517,7 @@ Output: 0</code></pre><h2 id="Note"><a href="#Note" class="headerlink" title="No
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rules"><span class="nav-number">1.</span> <span class="nav-text">Rules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Note"><span class="nav-number">2.</span> <span class="nav-text">Note</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rules"><span class="nav-number">1.</span> <span class="nav-text">Rules</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Schema"><span class="nav-number">2.</span> <span class="nav-text">SQL Schema</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Query"><span class="nav-number">3.</span> <span class="nav-text">Query</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
