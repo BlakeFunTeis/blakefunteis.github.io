@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="zh-tw">
+<html lang="en">
     <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <!--
@@ -174,6 +174,13 @@ window.oldVersion = [
 
 
 
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
 
     
 
@@ -202,7 +209,7 @@ window.oldVersion = [
     <meta property="og:title" content="1108-Defanging-an-IP-Address | Blake&#39;s Blog">
 <meta property="og:site_name" content="Blake&#39;s Blog">
 
-<meta property="og:locale" content="zh-tw">
+<meta property="og:locale" content="en">
 
 <meta property="og:url" content="https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/">
 <meta property="og:image" content="../uploads/leetcode.png">
@@ -296,7 +303,7 @@ window.oldVersion = [
     
 
 
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism-atom-dark.css" type="text/css"></head>
 
     <body>
         
@@ -318,66 +325,66 @@ window.oldVersion = [
 
     <nav class="navbar-section text-center">
     
-        <a href="/" class="navbar-link">首页</a>
+        <a href="/" class="navbar-link">Home</a>
     
     
-        <a href="/archives/" class="navbar-link">归档</a>
+        <a href="/archives/" class="navbar-link">Archives</a>
     
     
-        <a href="/search" class="navbar-link">搜索</a>
+        <a href="/search" class="navbar-link">Search</a>
     
     
     
         <div class="dropdown dropdown-right">
-    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <a class="navbar-link dropdown-toggle" tabindex="0">Share</a>
     <ul class="menu share-menu">
 
         <!-- Share Weibo -->
         
         <li class="menu-item">
-            <a href="http://service.weibo.com/share/share.php?appkey=&title=Blake's Blog&url=https://blakefunteis.github.io&pic=../uploads/leetcode.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Blake's Blog&url=https://blakefunteis.github.io&pic=../uploads/leetcode.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
         </li>
         
 
         <!-- Share Twitter -->
         
         <li class="menu-item">
-            <a href="https://twitter.com/intent/tweet?text=Blake's Blog&url=https://blakefunteis.github.io&via=Blake" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+            <a href="https://twitter.com/intent/tweet?text=Blake's Blog&url=https://blakefunteis.github.io&via=Blake" target="_blank" rel="external noopener noreferrer nofollow">Share to Twitter</a>
         </li>
         
 
         <!-- Share Facebook -->
         
         <li class="menu-item">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://blakefunteis.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://blakefunteis.github.io" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
         </li>
         
 
         <!-- Share Google+ -->
         
         <li class="menu-item">
-            <a href="https://plus.google.com/share?url=https://blakefunteis.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+            <a href="https://plus.google.com/share?url=https://blakefunteis.github.io" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
         </li>
         
 
         <!-- Share LinkedIn -->
         
         <li class="menu-item">
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blakefunteis.github.io&title=1108-Defanging-an-IP-Address" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blakefunteis.github.io&title=1108-Defanging-an-IP-Address" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
         </li>
         
 
         <!-- Share QQ -->
         
         <li class="menu-item">
-            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Blake's Blog&title=1108-Defanging-an-IP-Address&summary=關於程式語言的紀錄&pics=../uploads/leetcode.png&url=https://blakefunteis.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Blake's Blog&title=1108-Defanging-an-IP-Address&summary=關於程式語言的紀錄&pics=../uploads/leetcode.png&url=https://blakefunteis.github.io" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
         </li>
         
 
         <!-- Share Telegram -->
         
         <li class="menu-item">
-            <a href="https://t.me/share/url?url=https://blakefunteis.github.io&text=1108-Defanging-an-IP-Address" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+            <a href="https://t.me/share/url?url=https://blakefunteis.github.io&text=1108-Defanging-an-IP-Address" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
         </li>
         
 
@@ -436,54 +443,54 @@ window.oldVersion = [
     <div class="post-header-info-right">
         
             <div class="dropdown dropdown-right">
-<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<a class="dropdown-toggle" tabindex="0">Share the post</a>
 <ul class="menu share-menu">
     <!-- Share Weibo -->
     
     <li class="menu-item">
-        <a href="http://service.weibo.com/share/share.php?appkey=&title=1108-Defanging-an-IP-Address&url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/&pic=../uploads/leetcode.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=1108-Defanging-an-IP-Address&url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/&pic=../uploads/leetcode.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
     </li>
     
 
     <!-- Share Twitter -->
     
     <li class="menu-item">
-        <a href="https://twitter.com/intent/tweet?text=1108-Defanging-an-IP-Address&url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/&via=Blake" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        <a href="https://twitter.com/intent/tweet?text=1108-Defanging-an-IP-Address&url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/&via=Blake" target="_blank" rel="external noopener noreferrer nofollow">Share to Twitter</a>
     </li>
     
 
     <!-- Share Facebook -->
     
     <li class="menu-item">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
     </li>
     
 
     <!-- Share Google+ -->
     
     <li class="menu-item">
-        <a href="https://plus.google.com/share?url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        <a href="https://plus.google.com/share?url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
     </li>
     
 
     <!-- Share LinkedIn -->
     
     <li class="menu-item">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/&title=Blake's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/&title=Blake's Blog" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
     </li>
     
 
     <!-- Share QQ -->
     
     <li class="menu-item">
-        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Blake's Blog&title=Blake's Blog&summary=關於程式語言的紀錄&pics=../uploads/leetcode.png&url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Blake's Blog&title=Blake's Blog&summary=關於程式語言的紀錄&pics=../uploads/leetcode.png&url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
     </li>
     
 
     <!-- Share Telegram -->
     
     <li class="menu-item">
-        <a href="https://t.me/share/url?url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/&text=Blake's Blog" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        <a href="https://t.me/share/url?url=https://blakefunteis.github.io/2019/07/20/1108-Defanging-an-IP-Address/&text=Blake's Blog" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
     </li>
     
 
@@ -523,7 +530,7 @@ Output: &quot;255[.]100[.]50[.]0&quot;</code></pre><h2 id="Code"><a href="#Code"
     */
     function defangIPaddr($address) {
         $address = explode(&quot;.&quot;, $address);
-        return $address[0] . &#39;[.]&#39; . $address[1] . &#39;[.]&#39; . $address[2] . &#39;[.]&#39; . $address[3];
+        return $address[0] . &apos;[.]&apos; . $address[1] . &apos;[.]&apos; . $address[2] . &apos;[.]&apos; . $address[3];
     }
 }</code></pre><p>複雜度為 O(1)。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/defanging-an-ip-address" title="1108. Defanging an IP Address" target="_blank" rel="noopener">1108. Defanging an IP Address</a><br><a href="https://github.com/BlakeFunTeis/leetcode-php/blob/master/1108-Defanging_an_IP_Address.php" title="GitHub" target="_blank" rel="noopener">GitHub</a></p>
@@ -532,7 +539,7 @@ Output: &quot;255[.]100[.]50[.]0&quot;</code></pre><h2 id="Code"><a href="#Code"
                     
 
 
-    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <blockquote id="date-expire-notification" class="post-expired-notify">This article was last updated on <span id="date-expire-num"></span> days ago, and the information described in the article may have changed.</blockquote>
     <script>
         var dateUpdate = Date.parse("2019-09-11");
         var nowDate = new Date();
@@ -547,9 +554,9 @@ Output: &quot;255[.]100[.]50[.]0&quot;</code></pre><h2 id="Code"><a href="#Code"
     </script>
 
 
-<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-07-20T09:35:45.000Z" itemprop="datePublished">2019-07-20</time>
+<p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2019-07-20T09:35:45.000Z" itemprop="datePublished">2019-07-20</time>
 
-    , 最后修改于&nbsp;<time datetime="2019-09-11T07:05:07.007Z" itemprop="dateModified">2019-09-11</time>
+    , Updated at&nbsp;<time datetime="2019-09-11T07:05:07.007Z" itemprop="dateModified">2019-09-11</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
