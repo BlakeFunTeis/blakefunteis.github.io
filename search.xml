@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>7-Reverse-Integer</title>
+      <link href="/2019/11/13/7-Reverse-Integer/"/>
+      <url>/2019/11/13/7-Reverse-Integer/</url>
+      
+        <content type="html"><![CDATA[<p>Given a 32-bit signed integer, reverse digits of an integer.</p><h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p><pre><code>Input: 123Output: 321Input: -123Output: -321Input: 120Output: 21</code></pre><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre><code>class Solution {/*** @param Integer $x* @return Integer*/function reverse($x) {    if ($x &lt; 0) {        $x = &apos;-&apos;.substr(strrev($x), 0, -1);    } else {        $x = strrev($x);    }    return $x &gt; 2147483647 || $x &lt; -2147483647        ? 0        : (int)$x;    }}</code></pre><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/reverse-integer" title="7. Reverse Integer" target="_blank" rel="noopener">7. Reverse Integer</a><br><a href="https://github.com/BlakeFunTeis/leetcode-php/blob/master/7-Reverse-Integer.php" title="GitHub" target="_blank" rel="noopener">GitHub</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> PHP </tag>
+            
+            <tag> LeetCode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>為什麼選擇ReactJS？</title>
       <link href="/2019/11/10/%E7%82%BA%E4%BB%80%E9%BA%BC%E9%81%B8%E6%93%87ReactJS%EF%BC%9F/"/>
       <url>/2019/11/10/%E7%82%BA%E4%BB%80%E9%BA%BC%E9%81%B8%E6%93%87ReactJS%EF%BC%9F/</url>
