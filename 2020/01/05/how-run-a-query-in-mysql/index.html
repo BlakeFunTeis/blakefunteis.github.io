@@ -61,7 +61,7 @@ window.oldVersion = [
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
 <!-- Title -->
-<title>7-Reverse-Integer | Blake&#39;s Blog</title>
+<title>在MySQL中，一句查詢是如何執行的？ | Blake&#39;s Blog</title>
 
 <!-- favicon -->
 <!-- Favicons -->
@@ -80,11 +80,11 @@ window.oldVersion = [
 <meta name="format-detection" content="telephone=no">
 
 <!-- Description -->
-<meta name="description" content="Given a 32-bit signed integer, reverse digits of an integer.
-">
+<meta name="description" content="平常我們使用MySQL都是進行查詢然後資料庫返回結果
+mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查詢語...">
 
 <!-- Keywords -->
-<meta name="keywords" content=", PHP, LeetCode">
+<meta name="keywords" content=", MySQL">
 
 <!-- Disable Fucking Bloody Baidu Tranformation -->
 <meta http-equiv="Cache-Control" content="no-transform">
@@ -206,25 +206,25 @@ window.oldVersion = [
 
 
     <!-- ### The Open Graph & Twitter Card Protocol ### -->
-    <meta property="og:title" content="7-Reverse-Integer | Blake&#39;s Blog">
+    <meta property="og:title" content="在MySQL中，一句查詢是如何執行的？ | Blake&#39;s Blog">
 <meta property="og:site_name" content="Blake&#39;s Blog">
 
 <meta property="og:locale" content="en">
 
-<meta property="og:url" content="https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/">
-<meta property="og:image" content="/uploads/leetcode.png">
+<meta property="og:url" content="https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/">
+<meta property="og:image" content="/uploads/mysql.png">
 
-<meta property="og:description" content="Given a 32-bit signed integer, reverse digits of an integer.
-">
+<meta property="og:description" content="平常我們使用MySQL都是進行查詢然後資料庫返回結果
+mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查詢語...">
 
 <meta name="twitter:card" content="summary_large_image">
 
 
     <meta property="og:type" content="article">
-    <meta property="article:published_time" content="2019-11-13T02:27:25.000Z">
-    <meta property="article:modified_time" content="2019-11-13T02:27:25.000Z">
+    <meta property="article:published_time" content="2020-01-05T10:23:15.000Z">
+    <meta property="article:modified_time" content="2020-01-05T10:23:15.000Z">
     <meta property="article:author" content="Blake">
-    <meta property="og:article:tag" content=", PHP, LeetCode"> 
+    <meta property="og:article:tag" content=", MySQL"> 
 
 
 
@@ -241,7 +241,7 @@ window.oldVersion = [
 
 
     <!-- ### Canonical link ### -->
-    <link rel="canonical" href="https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/">
+    <link rel="canonical" href="https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/">
 
     <!-- ### Structured Data ### -->
     
@@ -251,22 +251,22 @@ window.oldVersion = [
 <script type="application/ld+json">
 {
     "@context": "http://schema.org",
-    "url": "https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/",
+    "url": "https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/",
     "@type": "BlogPosting",
     "logo": "https://blakefunteis.github.io/img/suka-favicon.ico",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/"
+        "@id": "https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/"
     },
-    "headline": "7-Reverse-Integer | Blake&#39;s Blog",
+    "headline": "在MySQL中，一句查詢是如何執行的？ | Blake&#39;s Blog",
     
     "image": {
         "@type": "ImageObject",
-        "url": "https://blakefunteis.github.io/uploads/leetcode.png"
+        "url": "https://blakefunteis.github.io/uploads/mysql.png"
     },
     
-    "datePublished": "2019-11-13T02:27:25.000Z",
-    "dateModified": "2019-11-13T02:35:51.400Z",
+    "datePublished": "2020-01-05T10:23:15.000Z",
+    "dateModified": "2020-01-06T08:50:08.379Z",
     "author": {
         "@type": "Person",
         "name": "Blake",
@@ -291,9 +291,9 @@ window.oldVersion = [
         "query-input": "required name=search_term_string"
     },
     
-    "keywords": ", PHP, LeetCode",
-    "description": "Given a 32-bit signed integer, reverse digits of an integer.
-"
+    "keywords": ", MySQL",
+    "description": "平常我們使用MySQL都是進行查詢然後資料庫返回結果
+mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查詢語..."
 }
 </script>
 
@@ -340,7 +340,7 @@ window.oldVersion = [
         <!-- Share Weibo -->
         
         <li class="menu-item">
-            <a href="http://service.weibo.com/share/share.php?appkey=&title=Blake's Blog&url=https://blakefunteis.github.io&pic=/uploads/leetcode.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=Blake's Blog&url=https://blakefunteis.github.io&pic=/uploads/mysql.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
         </li>
         
 
@@ -368,28 +368,28 @@ window.oldVersion = [
         <!-- Share LinkedIn -->
         
         <li class="menu-item">
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blakefunteis.github.io&title=7-Reverse-Integer" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blakefunteis.github.io&title=在MySQL中，一句查詢是如何執行的？" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
         </li>
         
 
         <!-- Share QQ -->
         
         <li class="menu-item">
-            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Blake's Blog&title=7-Reverse-Integer&summary=關於程式語言的紀錄&pics=/uploads/leetcode.png&url=https://blakefunteis.github.io" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=Blake's Blog&title=在MySQL中，一句查詢是如何執行的？&summary=關於程式語言的紀錄&pics=/uploads/mysql.png&url=https://blakefunteis.github.io" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
         </li>
         
 
         <!-- Share Telegram -->
         
         <li class="menu-item">
-            <a href="https://t.me/share/url?url=https://blakefunteis.github.io&text=7-Reverse-Integer" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
+            <a href="https://t.me/share/url?url=https://blakefunteis.github.io&text=在MySQL中，一句查詢是如何執行的？" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
         </li>
         
 
         <!-- QRCode -->
         
         <li class="menu-item">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB10lEQVR42u3a0Y7DIAxE0fz/T3dfdys8M46yFbg3L5WSJpxWwWDD9drwuECBAgVqgbrEsbzx7Zq6N/nen++AGoOqGq8wDpA8b3Ue1CxU1cjqfAVRncS1A+q7UPZh4hwoUBWmA/tY7wO1NUo9xE3S3Ev/+CwB1PaoZPL/xOdj2QyorVG26BB2hCpZ/ZeqC6itUepFdBM2N8lTCexy0AY1BpUUylzhQ00GkwIJqPmoavKfJKEOVD4f1CiUKtx3CiBJwT8OnqCORLmiV9oBqk7hOgGoeShXkO8M0q3EMx2QQR2JUpi7hdgqCKs/AtQMlEOkCcSdRMJGdFBHopLEwQ3USSBNcKBmolTCmSarKkm9VeAAdRwqLdonRTZZwDCbwEDNQKkkwU3WksG6s8EQ1AxUsrDjAmWyqSv6YaBGoVwSoCZxSZHMBVtQs1Aq6KlEoQq46kVvV11AHYtKJvzuHrXQ2C5wgDoelTTmAqgasKMCLagRKHckyYQafJOkFtQs1J2N764TdDZGR8V9UMeh1AueFOsTVHId1CxU58XsXnMbvEB9H8ptmGg1DApUY8NpsklQBmxQo1DpAlB380RrkRLUGJQLfm4x0S1wu8Ee1CzUTgcoUKBA/Tp+AOui8MBUoE14AAAAAElFTkSuQmCC" alr="QRCode">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACNElEQVR42u3a0U7EMAxE0f7/T8MTEqB4ZpwWsRvfviBomp5KdXHsXB9vcFwgQYIE+QLISxzV+e9//z1mNe/X7z8A5r4gZyOXL20xeTUmGZ/MCxJk9fJXgVNOKMavYO6+IEEmH98qSJIH7F4LEmR6o1UAuI96FTAgQe4kGAqzwlVB5ua/lQWBPA7pFmJ/9fPR1SLIY5BR4ShccHWS48eraiCPQVZFpp1AUslI5zzI2cj0hVaTJeNUUJXnQI5GuovkgkmMTQKzLGqBHIlUgxKMWnCpJCRJTkDORLqC0k5CnF5ni1sgxyJVkyj9sCfFU5VgLIMW5Eik2xSSnnNB1Ek6QM5GJgX47kakpNgVLdJAjkS6JDZ9gHRRliTXIEF2AiRpsrsEOd5cB3IsMvmwdgsCatOJgtouLcgRSLchRBWrHikCuOIAyHHIZNGlbrrTIHUBCnI2svvidxf6CiQ3noAcjXQTu+RY/VPoLMrau6NBHo3sFAvcObf4b+9EBTkGmS76k6TBfaBVYct2xECOQaYbiVxym25wSgu0IEF2F18uQUkC06FBzkWmxavOB9yhbzdAQY5D3ilMdQphCgpyJrK7iVNO2njgpHkFcibSJRhJ89I1+DtN/K0sCORxSBcwyUa7TnKiCgat7gPIo5FpIT9pxqeNKNfoBwkyTXR3CrAqgMoiF0iQBpQEQTf4WgkGyFHIKiDShlMnIOIHADkWmb78uw2q5OEeWy2CfHvkKx8gQYIE+Y/HJxMONxUjm0v+AAAAAElFTkSuQmCC" alr="QRCode">
         </li>
         
 
@@ -410,14 +410,14 @@ window.oldVersion = [
     <div id="post-card" class="card">
         
             <!-- # Post Thumbnail # -->
-            <div class="card-image" style="background-image: url('/uploads/leetcode.png');"></div>
+            <div class="card-image" style="background-image: url('/uploads/mysql.png');"></div>
         
         <div class="card-item-container">
             <div class="card-inner-cell">
                 <!-- # Post Header Info # -->
                 <div class="card-header">
                     
-    <h1 class="card-title h3 mb-2">7-Reverse-Integer</h1>
+    <h1 class="card-title h3 mb-2">在MySQL中，一句查詢是如何執行的？</h1>
 
 
 
@@ -425,7 +425,7 @@ window.oldVersion = [
 <div class="post-header-info">
     <p class="post-header-info-left text-gray">
         <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Blake's Avatar">
-        <span>2019-11-13</span>
+        <span>2020-01-05</span>
         
         
             <!-- Busuanzi Post Views -->
@@ -446,56 +446,56 @@ window.oldVersion = [
     <!-- Share Weibo -->
     
     <li class="menu-item">
-        <a href="http://service.weibo.com/share/share.php?appkey=&title=7-Reverse-Integer&url=https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/&pic=/uploads/leetcode.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=在MySQL中，一句查詢是如何執行的？&url=https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/&pic=/uploads/mysql.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
     </li>
     
 
     <!-- Share Twitter -->
     
     <li class="menu-item">
-        <a href="https://twitter.com/intent/tweet?text=7-Reverse-Integer&url=https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/&via=Blake" target="_blank" rel="external noopener noreferrer nofollow">Share to Twitter</a>
+        <a href="https://twitter.com/intent/tweet?text=在MySQL中，一句查詢是如何執行的？&url=https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/&via=Blake" target="_blank" rel="external noopener noreferrer nofollow">Share to Twitter</a>
     </li>
     
 
     <!-- Share Facebook -->
     
     <li class="menu-item">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
     </li>
     
 
     <!-- Share Google+ -->
     
     <li class="menu-item">
-        <a href="https://plus.google.com/share?url=https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
+        <a href="https://plus.google.com/share?url=https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
     </li>
     
 
     <!-- Share LinkedIn -->
     
     <li class="menu-item">
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/&title=Blake's Blog" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/&title=Blake's Blog" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
     </li>
     
 
     <!-- Share QQ -->
     
     <li class="menu-item">
-        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Blake's Blog&title=Blake's Blog&summary=關於程式語言的紀錄&pics=/uploads/leetcode.png&url=https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Blake's Blog&title=Blake's Blog&summary=關於程式語言的紀錄&pics=/uploads/mysql.png&url=https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
     </li>
     
 
     <!-- Share Telegram -->
     
     <li class="menu-item">
-        <a href="https://t.me/share/url?url=https://blakefunteis.github.io/2019/11/13/7-Reverse-Integer/&text=Blake's Blog" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
+        <a href="https://t.me/share/url?url=https://blakefunteis.github.io/2020/01/05/how-run-a-query-in-mysql/&text=Blake's Blog" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
     </li>
     
 
     <!-- QRCode -->
     
     <li class="menu-item">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB10lEQVR42u3a0Y7DIAxE0fz/T3dfdys8M46yFbg3L5WSJpxWwWDD9drwuECBAgVqgbrEsbzx7Zq6N/nen++AGoOqGq8wDpA8b3Ue1CxU1cjqfAVRncS1A+q7UPZh4hwoUBWmA/tY7wO1NUo9xE3S3Ev/+CwB1PaoZPL/xOdj2QyorVG26BB2hCpZ/ZeqC6itUepFdBM2N8lTCexy0AY1BpUUylzhQ00GkwIJqPmoavKfJKEOVD4f1CiUKtx3CiBJwT8OnqCORLmiV9oBqk7hOgGoeShXkO8M0q3EMx2QQR2JUpi7hdgqCKs/AtQMlEOkCcSdRMJGdFBHopLEwQ3USSBNcKBmolTCmSarKkm9VeAAdRwqLdonRTZZwDCbwEDNQKkkwU3WksG6s8EQ1AxUsrDjAmWyqSv6YaBGoVwSoCZxSZHMBVtQs1Aq6KlEoQq46kVvV11AHYtKJvzuHrXQ2C5wgDoelTTmAqgasKMCLagRKHckyYQafJOkFtQs1J2N764TdDZGR8V9UMeh1AueFOsTVHId1CxU58XsXnMbvEB9H8ptmGg1DApUY8NpsklQBmxQo1DpAlB380RrkRLUGJQLfm4x0S1wu8Ee1CzUTgcoUKBA/Tp+AOui8MBUoE14AAAAAElFTkSuQmCC" alt="QRCode">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACNElEQVR42u3a0U7EMAxE0f7/T8MTEqB4ZpwWsRvfviBomp5KdXHsXB9vcFwgQYIE+QLISxzV+e9//z1mNe/X7z8A5r4gZyOXL20xeTUmGZ/MCxJk9fJXgVNOKMavYO6+IEEmH98qSJIH7F4LEmR6o1UAuI96FTAgQe4kGAqzwlVB5ua/lQWBPA7pFmJ/9fPR1SLIY5BR4ShccHWS48eraiCPQVZFpp1AUslI5zzI2cj0hVaTJeNUUJXnQI5GuovkgkmMTQKzLGqBHIlUgxKMWnCpJCRJTkDORLqC0k5CnF5ni1sgxyJVkyj9sCfFU5VgLIMW5Eik2xSSnnNB1Ek6QM5GJgX47kakpNgVLdJAjkS6JDZ9gHRRliTXIEF2AiRpsrsEOd5cB3IsMvmwdgsCatOJgtouLcgRSLchRBWrHikCuOIAyHHIZNGlbrrTIHUBCnI2svvidxf6CiQ3noAcjXQTu+RY/VPoLMrau6NBHo3sFAvcObf4b+9EBTkGmS76k6TBfaBVYct2xECOQaYbiVxym25wSgu0IEF2F18uQUkC06FBzkWmxavOB9yhbzdAQY5D3ilMdQphCgpyJrK7iVNO2njgpHkFcibSJRhJ89I1+DtN/K0sCORxSBcwyUa7TnKiCgat7gPIo5FpIT9pxqeNKNfoBwkyTXR3CrAqgMoiF0iQBpQEQTf4WgkGyFHIKiDShlMnIOIHADkWmb78uw2q5OEeWy2CfHvkKx8gQYIE+Y/HJxMONxUjm0v+AAAAAElFTkSuQmCC" alt="QRCode">
     </li>
     
 
@@ -509,38 +509,34 @@ window.oldVersion = [
                     
                         
                             <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Rules"><span class="post-toc-number">1.</span> <span class="post-toc-text">Rules</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Code"><span class="post-toc-number">2.</span> <span class="post-toc-text">Code</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Reference"><span class="post-toc-number">3.</span> <span class="post-toc-text">Reference</span></a></li></ol>
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#連接器"><span class="post-toc-number">1.</span> <span class="post-toc-text">連接器</span></a></li></ol>
                             </div>
                         
                     
                     <article id="post-content">
-                        <p>Given a 32-bit signed integer, reverse digits of an integer.</p>
-<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
-<pre><code>Input: 123
-Output: 321
-
-Input: -123
-Output: -321
-
-Input: 120
-Output: 21</code></pre><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><pre><code>class Solution {
-
-/**
-* @param Integer $x
-* @return Integer
-*/
-function reverse($x) {
-    if ($x &lt; 0) {
-        $x = &apos;-&apos;.substr(strrev($x), 0, -1);
-    } else {
-        $x = strrev($x);
-    }
-
-    return $x &gt; 2147483647 || $x &lt; -2147483647
-        ? 0
-        : (int)$x;
-    }
-}</code></pre><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/reverse-integer" title="7. Reverse Integer" target="_blank" rel="noopener">7. Reverse Integer</a><br><a href="https://github.com/BlakeFunTeis/leetcode-php/blob/master/7-Reverse-Integer.php" title="GitHub" target="_blank" rel="noopener">GitHub</a></p>
+                        <p>平常我們使用MySQL都是進行查詢然後資料庫返回結果</p>
+<pre><code>mysql &gt; SELECT * FROM table WHERE id = 1</code></pre><p>但是我們卻不知道這句查詢語句在MySQL內部的執行過程，所以我們一起把MySQL拆解，希望藉由這個拆解過程，讓我們對MySQL有更深入的理解，這樣當我們碰到一些異常或者問題時，就可以直指本質，更快速的找出問題發生點並解決。</p>
+<pre><code>客戶端 → 連接器 → 分析器 → 優化器 → 執行器
+            ↘     ↙
+             查詢緩存</code></pre><h3 id="連接器"><a href="#連接器" class="headerlink" title="連接器"></a>連接器</h3><p>負責建立維持和管理連線、獲取權限。</p>
+<pre><code>mysql -u root -p</code></pre><p>一般來說command line連線的指令會是上述這句，在完成TCP握手之後，連接器會開始驗證你的身份，這時候用的就是你的帳號和密碼。</p>
+<ol>
+<li>如果帳號或者密碼錯誤，你會收到 ”Access denied for user” 的錯誤，然後客戶端（海豚, phpmyadmin, cli, etc….）會結束此條連線請求</li>
+<li>如果帳號密碼皆正確，連接器會到權限資料表查出你擁有的權限，之後這個連接的權限判斷邏輯，都會依賴此時讀到的權限。</li>
+</ol>
+<p>在這邊解釋了，為什麼我們每次修改權限，都需要再次新建連線，才會讀到新的權限配置。</p>
+<p>連接完成後，如果沒有執行任何動作，這條連線就會處於Sleep狀態</p>
+<p><img src="1.png" alt></p>
+<p>那條Sleep連線是我剛剛建立的新連線，各位如果想實際操作，可以建立新連線後，在舊有的連線中使用這句指令</p>
+<pre><code>mysql &gt; show processlist  #查看mysql目前的用戶連線進程</code></pre><p>如果連線太長時間沒有操作，連接器就會自動斷開連線，預設是8小時，如果需要修改可以變更 <strong>wait_tomeout</strong>。</p>
+<p>連接被斷開之後，客戶端再次發送請求的話，就會收到 “Lost connection to MySQL server during query”的錯誤，這時候如果要繼續，就必須要重新建立新連線，然後再執行請求。</p>
+<p>建立連線過程，通常都是比較複雜的，所以建議盡量減少使用建立連線的動作，也就是說盡量使用長連線，但是全部使用長連線的話，有可能會導致MySQL佔用記憶體上漲很快，這是因為MySQL在執行過程中臨時使用的記憶體是管理在連線對象裡面的，這些資源如果沒做其他動作，那麼只有在斷開連線的時候才會釋放，所以如果長時間累積下來，可能會導致記憶體佔用過大，被系統強行kill。</p>
+<p>如何解決這個問題？</p>
+<ol>
+<li>在完成一個佔用大量內存的大查詢後，斷開連線，之後再重建連線。</li>
+<li>如果是使用MySQL 5.7或者是更新的版本，可以使用 mysql_reset_connection，來重新初始化連線，這個過程不需要重連或者是權限驗證，但是他會將連線恢復到剛創建完的狀態</li>
+</ol>
+<p>未完……..</p>
 
                     </article>
                     
@@ -548,7 +544,7 @@ function reverse($x) {
 
     <blockquote id="date-expire-notification" class="post-expired-notify">This article was last updated on <span id="date-expire-num"></span> days ago, and the information described in the article may have changed.</blockquote>
     <script>
-        var dateUpdate = Date.parse("2019-11-13");
+        var dateUpdate = Date.parse("2020-01-06");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -561,7 +557,9 @@ function reverse($x) {
     </script>
 
 
-<p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2019-11-13T02:27:25.000Z" itemprop="datePublished">2019-11-13</time>
+<p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2020-01-05T10:23:15.000Z" itemprop="datePublished">2020-01-05</time>
+
+    , Updated at&nbsp;<time datetime="2020-01-06T08:50:08.379Z" itemprop="dateModified">2020-01-06</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
@@ -571,9 +569,7 @@ function reverse($x) {
 <span class="post-tags-list mt-2">
 
 
-<a class="post-tags-list-item" href="/tags/PHP/" rel="tag">#&nbsp;PHP</a>
-
-<a class="post-tags-list-item" href="/tags/LeetCode/" rel="tag">#&nbsp;LeetCode</a>
+<a class="post-tags-list-item" href="/tags/MySQL/" rel="tag">#&nbsp;MySQL</a>
 
 </span>
 
@@ -586,20 +582,13 @@ function reverse($x) {
 <ul class="pagination">
     <!-- Prev Nav -->
     
-        <li class="page-item page-prev">
-            <a href="/2020/01/05/how-run-a-query-in-mysql/" rel="prev">
-                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">在MySQL中，一句查詢是如何執行的？</div>
-            </a>
-        </li>
-    
 
     <!-- Next Nav -->
     
         <li class="page-item page-next">
-            <a href="/2019/11/10/為什麼選擇ReactJS？/" rel="next">
+            <a href="/2019/11/13/7-Reverse-Integer/" rel="next">
                 <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
-                <div class="page-item-subtitle">為什麼選擇ReactJS？</div>
+                <div class="page-item-subtitle">7-Reverse-Integer</div>
             </a>
         </li>
     
