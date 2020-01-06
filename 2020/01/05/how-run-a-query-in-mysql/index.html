@@ -266,7 +266,7 @@ mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查
     },
     
     "datePublished": "2020-01-05T10:23:15.000Z",
-    "dateModified": "2020-01-06T08:50:08.379Z",
+    "dateModified": "2020-01-06T10:20:06.819Z",
     "author": {
         "@type": "Person",
         "name": "Blake",
@@ -509,7 +509,7 @@ mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查
                     
                         
                             <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#連接器"><span class="post-toc-number">1.</span> <span class="post-toc-text">連接器</span></a></li></ol>
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#連接器"><span class="post-toc-number">1.</span> <span class="post-toc-text">連接器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查詢緩存"><span class="post-toc-number">2.</span> <span class="post-toc-text">查詢緩存</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析器"><span class="post-toc-number">3.</span> <span class="post-toc-text">分析器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#優化器"><span class="post-toc-number">4.</span> <span class="post-toc-text">優化器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#執行器"><span class="post-toc-number">5.</span> <span class="post-toc-text">執行器</span></a></li></ol>
                             </div>
                         
                     
@@ -536,7 +536,29 @@ mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查
 <li>在完成一個佔用大量內存的大查詢後，斷開連線，之後再重建連線。</li>
 <li>如果是使用MySQL 5.7或者是更新的版本，可以使用 mysql_reset_connection，來重新初始化連線，這個過程不需要重連或者是權限驗證，但是他會將連線恢復到剛創建完的狀態</li>
 </ol>
-<p>未完……..</p>
+<h3 id="查詢緩存"><a href="#查詢緩存" class="headerlink" title="查詢緩存"></a>查詢緩存</h3><p>連線完成後，就可以使用SELECT語句，這時候會來到第二步，查詢緩存。</p>
+<p>MySQL得到一句SELECT後，會先到緩存搜尋看看之前是不是有執行過這條查詢，之前執行的語句會以key-value的形式緩存在記憶體中。key是查詢的語句，value則是結果，如果有匹配的緩存，就會直接返回value。如果緩存中沒有，MySQL會進行查詢後，將查詢結果寫進緩存當中。<br>MySQL如果使用查詢緩存返回資料，那麼MySQL就不需要執行後面複雜的操作，這將大大提高這句查詢在MySQL的效率</p>
+<p>但是大多數的情況下，建議不要使用緩存。為什麼呢？</p>
+<ol>
+<li>在一個頻繁會更改的表，在更新的時候該表內所有的緩存都將全部被清空，因此很有可能在未使用到緩存的時候，該表的緩存已經被全部清空了。除非是使用長期不會變動的表，否則不太建議使用查詢緩存。</li>
+<li>MySQL 8.0 已經把緩存功能徹底拔除。</li>
+</ol>
+<h3 id="分析器"><a href="#分析器" class="headerlink" title="分析器"></a>分析器</h3><p>如果緩存沒有查到你要的結果，那麼就會開始真正執行搜尋語句，首先，MySQL會需要分析你的查詢語句的意思。</p>
+<p>MySQL會抓取關鍵字，以我們一開始的那句為例，SELECT判斷出這是一個搜尋語句，table判斷為表名，id判斷為欄位名。同時也會判斷你這句查詢是否符合MySQL的查詢語法規則。</p>
+<p>如果判斷輸入的MySQL查詢語句是錯的，那麼他就會返回錯誤給客戶端</p>
+<pre><code>1064 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &apos;how processlist  # 123123123&apos; at line 1, Time: 0.003000s</code></pre><p>一般的語法錯誤會出現在 <strong>use near</strong> 後面</p>
+<h3 id="優化器"><a href="#優化器" class="headerlink" title="優化器"></a>優化器</h3><p>經過了分析器，MySQL已經知道你想做什麼，在開始執行前也需要經過優化器處理。</p>
+<p>優化器主要的工作是當表裡有多個索引，決定使用哪個索引，或者在一個查詢語法裡面有Join的時候，決定各個表的連接順序。優化器工作完成之後，這句的執行流程方式，基本上就已經定型了。</p>
+<h3 id="執行器"><a href="#執行器" class="headerlink" title="執行器"></a>執行器</h3><p>MySQL透過分析器知道你要做什麼，通過優化器知道該如何做，接下來就是要執行查詢語句了。</p>
+<p>開始執行時，會先判斷你是否有對這個表搜尋的權限，如果有查詢緩存，會在緩存返回時，進行權限判斷。如果沒有權限則會返回以下訊息</p>
+<pre><code>mysql &gt; SELECT command denied to user &apos;test&apos;@&apos;localhost&apos; for table &apos;table&apos;</code></pre><p>如果有權限就會打開表繼續執行，打開表的時候，執行器會根據表的引擎去選擇該引擎的接口。</p>
+<p>執行流程</p>
+<ol>
+<li>調用引擎取這個表的第一行，判斷ID是否為1，如果不是則跳過，如果是則將這筆結果保存在結果集內。</li>
+<li>調用引擎取下一筆資料，重複驗證判斷，直至取到這個表的最後一行</li>
+<li>執行器將所有滿足條件的結果返回給客戶端</li>
+</ol>
+<p>到此，這個查詢就已經完成了。</p>
 
                     </article>
                     
@@ -559,7 +581,7 @@ mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查
 
 <p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2020-01-05T10:23:15.000Z" itemprop="datePublished">2020-01-05</time>
 
-    , Updated at&nbsp;<time datetime="2020-01-06T08:50:08.379Z" itemprop="dateModified">2020-01-06</time>
+    , Updated at&nbsp;<time datetime="2020-01-06T10:20:06.819Z" itemprop="dateModified">2020-01-06</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
