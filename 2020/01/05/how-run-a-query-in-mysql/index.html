@@ -266,7 +266,7 @@ mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查
     },
     
     "datePublished": "2020-01-05T10:23:15.000Z",
-    "dateModified": "2020-01-06T10:20:06.819Z",
+    "dateModified": "2020-01-06T16:22:56.808Z",
     "author": {
         "@type": "Person",
         "name": "Blake",
@@ -515,7 +515,7 @@ mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查
                     
                     <article id="post-content">
                         <p>平常我們使用MySQL都是進行查詢然後資料庫返回結果</p>
-<pre><code>mysql &gt; SELECT * FROM table WHERE id = 1</code></pre><p>但是我們卻不知道這句查詢語句在MySQL內部的執行過程，所以我們一起把MySQL拆解，希望藉由這個拆解過程，讓我們對MySQL有更深入的理解，這樣當我們碰到一些異常或者問題時，就可以直指本質，更快速的找出問題發生點並解決。</p>
+<pre><code>mysql &gt; SELECT * FROM table WHERE id = 1</code></pre><p>但是我們卻不知道這句查詢語句在MySQL內部的執行過程，所以我們一起來看看MySQL底層對查詢到底做了些什麼事情，這樣當我們碰到一些異常或者問題時，就可以直指本質，更快速的找出問題發生點並解決。</p>
 <pre><code>客戶端 → 連接器 → 分析器 → 優化器 → 執行器
             ↘     ↙
              查詢緩存</code></pre><h3 id="連接器"><a href="#連接器" class="headerlink" title="連接器"></a>連接器</h3><p>負責建立維持和管理連線、獲取權限。</p>
@@ -566,7 +566,7 @@ mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查
 
     <blockquote id="date-expire-notification" class="post-expired-notify">This article was last updated on <span id="date-expire-num"></span> days ago, and the information described in the article may have changed.</blockquote>
     <script>
-        var dateUpdate = Date.parse("2020-01-06");
+        var dateUpdate = Date.parse("2020-01-07");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -581,7 +581,7 @@ mysql &amp;gt; SELECT * FROM table WHERE id = 1但是我們卻不知道這句查
 
 <p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2020-01-05T10:23:15.000Z" itemprop="datePublished">2020-01-05</time>
 
-    , Updated at&nbsp;<time datetime="2020-01-06T10:20:06.819Z" itemprop="dateModified">2020-01-06</time>
+    , Updated at&nbsp;<time datetime="2020-01-06T16:22:56.808Z" itemprop="dateModified">2020-01-07</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
