@@ -264,7 +264,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-01-07T04:23:15.000Z",
-    "dateModified": "2020-01-07T08:08:35.539Z",
+    "dateModified": "2020-01-07T16:32:59.924Z",
     "author": {
         "@type": "Person",
         "name": "Blake",
@@ -506,7 +506,7 @@ window.oldVersion = [
                     
                         
                             <div id="post-toc">
-                                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redo-Log-重做日誌"><span class="post-toc-number">1.</span> <span class="post-toc-text">Redo Log 重做日誌</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Binlog-歸檔日誌"><span class="post-toc-number">2.</span> <span class="post-toc-text">Binlog 歸檔日誌</span></a></li></ol>
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redo-Log-重做日誌"><span class="post-toc-number">1.</span> <span class="post-toc-text">Redo Log 重做日誌</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Binlog-歸檔日誌"><span class="post-toc-number">2.</span> <span class="post-toc-text">Binlog 歸檔日誌</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Redo-Log和Binlog的差異"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Redo Log和Binlog的差異</span></a></li></ol></li></ol>
                             </div>
                         
                     
@@ -527,8 +527,23 @@ window.oldVersion = [
 <p>同樣的在MySQL也是有相同的問題，如果每次資料都是寫入硬碟（記帳小本本），然後硬碟（記帳小本本）還要找到相應的資料，之後硬碟（記帳小本本）在進行更新，整個IO成本都太高，為了解決這個問題，MySQL的作者也採用了類似上面的方式來解決這問題。</p>
 <p>記帳紙和記帳本之間的關係，其實就是MySQL中的 <strong>Write-Ahead Logging</strong> 先寫日誌再寫硬碟，也就是先寫記帳紙，等回家之後或者能抽空的時候在寫記帳本。</p>
 <p>當有一條資料要更新的時候，<strong>InnoDB</strong> 會先把紀錄寫進Redo Log（記帳紙）上，並且更新記憶體，到這邊更新其實就算完成了。同時，InnoDB會在適當的時候將這筆更新寫進硬碟，但是這個通常都是資料庫比較空閑的時候才會做的，就像我們回家才會把記帳紙內的帳目紀錄到記帳本上。</p>
-<p>Redo Log也是有固定的大小，就像我們的記帳紙一樣，都會有寫滿的一天，那麼當Redo Log被寫滿了，就必須先把部分寫進硬碟，才能為之後新的紀錄騰出空間，我們的記帳紙也相同。這樣即使資料庫發生異常重啟，之前提交的紀錄也不會消失，這個也稱之為「Crash-Safe」。</p>
-<h3 id="Binlog-歸檔日誌"><a href="#Binlog-歸檔日誌" class="headerlink" title="Binlog 歸檔日誌"></a>Binlog 歸檔日誌</h3><p>未完………</p>
+<p>Redo Log也是有固定的大小，就像我們的記帳紙一樣，都會有寫滿的一天，那麼當Redo Log被寫滿了，就必須先把部分寫進硬碟，才能為之後新的紀錄騰出空間。這樣即使資料庫發生異常重啟，之前提交的紀錄也不會消失，這個也稱之為「Crash-Safe」。</p>
+<h3 id="Binlog-歸檔日誌"><a href="#Binlog-歸檔日誌" class="headerlink" title="Binlog 歸檔日誌"></a>Binlog 歸檔日誌</h3><p>Redo Log 是InnoDB引擎的特有日誌，而Server本身當然也有自己的日誌就是Binlog。</p>
+<p>為什麼會有兩份日誌呢？<br>因為一開始MySQL並沒有InnoDB的引擎，MySQL自帶的是MyISAM，但是MyISAM沒有Crash-Safe的能力，Binlog又只能用於歸檔。而InnoDB是另一個公司以插件的形式導入MySQL的。既然依靠Binlog無法實現Crash-Safe，那麼InnoDB只好使用另一套日誌Redo Log來實現Crash-Safe，這就是為什麼有兩套日誌的原因。</p>
+<h4 id="Redo-Log和Binlog的差異"><a href="#Redo-Log和Binlog的差異" class="headerlink" title="Redo Log和Binlog的差異"></a>Redo Log和Binlog的差異</h4><ol>
+<li>Redo log是InnoDB獨有，而Binlog是MySQL內建的。</li>
+<li>Redo log紀錄的是“做了什麼修改”；Binlog則是“某ID=10的欄位A改成100”</li>
+<li>Redo log是循環寫的，空間會用完，如果要再新增，那麼就要把之前的一些紀錄清除掉；Binlog寫到一定大小後會切換到下一個，並不會覆蓋之前所寫的</li>
+</ol>
+<p>了解兩個日誌，我們來看看InnoDB在Update語句時候的流程是什麼</p>
+<ol>
+<li>執行器先找InnoDB取出例如ID等於10的，因ID是主鍵，所以會用樹搜索到這一筆資料，如果資料本來就在記憶體中就直接返回給執行器，如果沒有，則從硬碟中取出在寫進記憶體並且返回。</li>
+<li>執行器拿到資料後把資料變更為Update所要更改的資料成為新資料，之後直接調用InnoDB寫入新資料。</li>
+<li>InnoDB將這筆資料寫入記憶體中，同時也會將這筆操作寫入Redo log中。</li>
+<li>執行器產生這筆操作的binlog，並且把binlog寫入硬碟。</li>
+<li>執行器調用InnoDB的提交接口，InnoDB把剛剛寫入的Redo log改成提交的狀態。</li>
+</ol>
+<p>到此一句簡單的更新完成。</p>
 
                     </article>
                     
@@ -536,7 +551,7 @@ window.oldVersion = [
 
     <blockquote id="date-expire-notification" class="post-expired-notify">This article was last updated on <span id="date-expire-num"></span> days ago, and the information described in the article may have changed.</blockquote>
     <script>
-        var dateUpdate = Date.parse("2020-01-07");
+        var dateUpdate = Date.parse("2020-01-08");
         var nowDate = new Date();
         var a = nowDate.getTime();
         var b = a - dateUpdate;
@@ -550,6 +565,8 @@ window.oldVersion = [
 
 
 <p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2020-01-07T04:23:15.000Z" itemprop="datePublished">2020-01-07</time>
+
+    , Updated at&nbsp;<time datetime="2020-01-07T16:32:59.924Z" itemprop="dateModified">2020-01-08</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
