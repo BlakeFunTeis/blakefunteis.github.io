@@ -264,7 +264,7 @@ window.oldVersion = [
     },
     
     "datePublished": "2020-01-05T10:23:15.000Z",
-    "dateModified": "2020-01-07T05:23:47.666Z",
+    "dateModified": "2020-01-07T08:07:19.971Z",
     "author": {
         "@type": "Person",
         "name": "Blake",
@@ -505,14 +505,30 @@ window.oldVersion = [
                 <div class="card-body">
                     
                         
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Redo-Log-重做日誌"><span class="post-toc-number">1.</span> <span class="post-toc-text">Redo Log 重做日誌</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Binlog-歸檔日誌"><span class="post-toc-number">2.</span> <span class="post-toc-text">Binlog 歸檔日誌</span></a></li></ol>
+                            </div>
+                        
                     
                     <article id="post-content">
                         <p>繼上一章「<a href="https://blakefunteis.github.io/2020/01/05/how-run-a-select-in-mysql">一句查詢在MySQL底層是如何運作的？</a>」我們了解了MySQL在一句SQL查詢語句後，如何分析優化和執行該語句。</p>
 <pre><code>客戶端 → 連接器 → 分析器 → 優化器 → 執行器
             ↘     ↙
-             查詢緩存</code></pre><p>其實更新語句，同樣也會走這個流程。不過他少了查詢緩存，確切來說他不是少了查詢緩存，而是清除緩存，就如上一章我們所講，如果表有變更，他就會清除該表內的查詢緩存，所以才不建議使用查詢緩存。</p>
+             查詢緩存</code></pre><p>其實更新語句，同樣也會走這個流程。不過他少了查詢緩存，確切來說他不是少了查詢緩存，而是清除緩存，就如上一章我們所講，如果表有變更，他就會清除該表內的查詢緩存，所以才不建議使用查詢緩存，同時他跟查詢還有幾點不同，這個我們稍後會講到。</p>
 <p>過去的時候，不管是工作還是在學進修的機會，我們有非常低的機率會遇到資料庫整個資料異常，需要恢復到一個禮拜前的資料，但是那時候沒有執行資料備份出成為sql檔案，那麼我們要如何把資料庫還原到一個禮拜前的狀態？</p>
-<p>未完…..</p>
+<p>這時候就要說更新語句跟查詢語句不一樣的地方了，同時也是今天這主題的兩個主角，就是「<a href="https://en.wikipedia.org/wiki/Redo_log" target="_blank" rel="noopener">Redo Log 重做日誌</a>」和「<a href="https://baike.baidu.com/item/Mysql%20Binlog#1" target="_blank" rel="noopener">Binlog 歸檔日誌</a>」</p>
+<h3 id="Redo-Log-重做日誌"><a href="#Redo-Log-重做日誌" class="headerlink" title="Redo Log 重做日誌"></a>Redo Log 重做日誌</h3><p><img src="1.jpg" alt></p>
+<p>我們平常在外面消費會有記帳的習慣，在還沒有記帳APP的時候，都是先記錄在紙上，但是因為每天都會消費，所以帳越來越多，我們一定還會有一本記帳小本本，來專門記錄所有的帳。如果今天要記帳，那麼我可以有兩種做法</p>
+<ol>
+<li>直接拿出記帳小本本，紀錄這筆帳</li>
+<li>先記錄在紙上，等回家之後再記錄到記帳小本本上。</li>
+</ol>
+<p>在外面很忙或者不好拿出記帳本的時候，我們肯定都是選擇二者，先記錄在紙上，等回家之後再紀錄到記帳本上，因為前者我們必須拿著一本比較重的記帳本，然後還要翻到那一頁的日期再進行紀錄。速度和方便性自然都是第二者比較快比較方便。</p>
+<p>同樣的在MySQL也是有相同的問題，如果每次資料都是寫入硬碟（記帳小本本），然後硬碟（記帳小本本）還要找到相應的資料，之後硬碟（記帳小本本）在進行更新，整個IO成本都太高，為了解決這個問題，MySQL的作者也採用了類似上面的方式來解決這問題。</p>
+<p>記帳紙和記帳本之間的關係，其實就是MySQL中的 <strong>Write-Ahead Logging</strong> 先寫日誌再寫硬碟，也就是先寫記帳紙，等回家之後或者能抽空的時候在寫記帳本。</p>
+<p>當有一條資料要更新的時候，<strong>InnoDB</strong> 會先把紀錄寫進Redo Log（記帳紙）上，並且更新記憶體，到這邊更新其實就算完成了。同時，InnoDB會在適當的時候將這筆更新寫進硬碟，但是這個通常都是資料庫比較空閑的時候才會做的，就像我們回家才會把記帳紙內的帳目紀錄到記帳本上。</p>
+<p>Redo Log也是有固定的大小，就像我們的記帳紙一樣，都會有寫滿的一天，那麼當Redo Log被寫滿了，就必須先把部分寫進硬碟，才能為之後新的紀錄騰出空間，我們的記帳紙也相同。這樣即使資料庫發生異常重啟，之前提交的紀錄也不會消失，這個也稱之為「Crash-Safe」。</p>
+<h3 id="Binlog-歸檔日誌"><a href="#Binlog-歸檔日誌" class="headerlink" title="Binlog 歸檔日誌"></a>Binlog 歸檔日誌</h3><p>未完………</p>
 
                     </article>
                     
@@ -535,7 +551,7 @@ window.oldVersion = [
 
 <p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2020-01-05T10:23:15.000Z" itemprop="datePublished">2020-01-05</time>
 
-    , Updated at&nbsp;<time datetime="2020-01-07T05:23:47.666Z" itemprop="dateModified">2020-01-07</time>
+    , Updated at&nbsp;<time datetime="2020-01-07T08:07:19.971Z" itemprop="dateModified">2020-01-07</time>
 
 </p>
 <p class="post-footer-info mb-0 pt-2">
