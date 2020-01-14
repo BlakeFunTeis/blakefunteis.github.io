@@ -82,7 +82,8 @@ window.oldVersion = [
 <meta name="format-detection" content="telephone=no">
 
 <!-- Description -->
-<meta name="description" content="RulesWrite a SQL query to find all dupli...">
+<meta name="description" content="Rules
+Write a SQL query to find all duplicate email...">
 
 <!-- Keywords -->
 <meta name="keywords" content=", LeetCode, MySQL, Database">
@@ -215,7 +216,8 @@ window.oldVersion = [
 <meta property="og:url" content="https://blakefunteis.github.io/2019/07/21/182-Duplicate-Emails/">
 <meta property="og:image" content="/uploads/leetcode.png">
 
-<meta property="og:description" content="RulesWrite a SQL query to find all dupli...">
+<meta property="og:description" content="Rules
+Write a SQL query to find all duplicate email...">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -301,7 +303,8 @@ window.oldVersion = [
     },
     
     "keywords": ", LeetCode, MySQL, Database",
-    "description": "RulesWrite a SQL query to find all dupli..."
+    "description": "Rules
+Write a SQL query to find all duplicate email..."
 }
 </script>
 
@@ -522,7 +525,8 @@ window.oldVersion = [
                         
                     
                     <article id="post-content">
-                        <h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><p>Write a SQL query to find all duplicate emails in a table named Person.</p>
+                        <h2 id="Rules"><a class="header-anchor" href="#Rules"></a>Rules</h2>
+<p>Write a SQL query to find all duplicate emails in a table named Person.</p>
 <pre>
 +----+---------+
 | Id | Email   |
@@ -540,22 +544,22 @@ window.oldVersion = [
 | a@b.com |
 +---------+
 </pre>
-
-<h2 id="SQL-Schema"><a href="#SQL-Schema" class="headerlink" title="SQL Schema"></a>SQL Schema</h2><pre>
+<h2 id="SQL-Schema"><a class="header-anchor" href="#SQL-Schema"></a>SQL Schema</h2>
+<pre>
 Create table If Not Exists Person (Id int, Email varchar(255))
 Truncate table Person
 insert into Person (Id, Email) values ('1', 'a@b.com')
 insert into Person (Id, Email) values ('2', 'c@d.com')
 insert into Person (Id, Email) values ('3', 'a@b.com')
 </pre>
-
-<h2 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h2><pre>
+<h2 id="Query"><a class="header-anchor" href="#Query"></a>Query</h2>
+<pre>
 SELECT Email FROM Person
 Group by Email
 HAVING count(Email) > 1
 </pre>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://leetcode.com/problems/duplicate-emails" title="182. Duplicate Emails" target="_blank" rel="noopener">182. Duplicate Emails</a></p>
+<h2 id="Reference"><a class="header-anchor" href="#Reference"></a>Reference</h2>
+<p><a href="https://leetcode.com/problems/duplicate-emails" title="182. Duplicate Emails" target="_blank" rel="noopener">182. Duplicate Emails</a></p>
 
                     </article>
                     
