@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>用一個領取折價券來舉例時常出現的邏輯錯誤</title>
+      <link href="/2020/01/14/%E7%94%A8%E4%B8%80%E5%80%8B%E9%A0%98%E5%8F%96%E6%8A%98%E5%83%B9%E5%88%B8%E4%BE%86%E8%88%89%E4%BE%8B%E6%99%82%E5%B8%B8%E5%87%BA%E7%8F%BE%E7%9A%84%E9%82%8F%E8%BC%AF%E9%8C%AF%E8%AA%A4/"/>
+      <url>/2020/01/14/%E7%94%A8%E4%B8%80%E5%80%8B%E9%A0%98%E5%8F%96%E6%8A%98%E5%83%B9%E5%88%B8%E4%BE%86%E8%88%89%E4%BE%8B%E6%99%82%E5%B8%B8%E5%87%BA%E7%8F%BE%E7%9A%84%E9%82%8F%E8%BC%AF%E9%8C%AF%E8%AA%A4/</url>
+      
+        <content type="html"><![CDATA[<p>在我們寫專案的過程中，時常碰到需要先判斷是否已經有這筆資料了，沒有的話就寫入，有的話就彈出錯誤。下面我們來用領取折價券來模擬這個狀況。</p><p>我們先構建出一個基本的領取折價券的資料表結構</p><table><thead><tr><th>名稱</th><th>類型</th><th>註解</th></tr></thead><tbody><tr><td>id</td><td>int</td><td>PK</td></tr><tr><td>user_id</td><td>int</td><td>用戶ID</td></tr><tr><td>amount_id</td><td>int</td><td>價格ID</td></tr><tr><td>serial_number</td><td>char</td><td>折價券序號</td></tr></tbody></table><pre><code>CREATE TABLE `test`.`test`  (  `id` int(10) NOT NULL AUTO_INCREMENT,  `user_id` int(10) NOT NULL,  `amount_id` int(10) NOT NULL,  `serial_number` char(32) NOT NULL,  `created_at` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),  `updated_at` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0),  PRIMARY KEY (`id`));</code></pre><p>這時候有一個需求，一個用戶只能領取五次折價券，這時候我們一般思考步驟是</p><ol><li>先判斷這個用戶有沒有領取超過五次</li><li>沒有則寫入並返回成功，有則不寫入並返回失敗。</li></ol><p>之後我們按照這邏輯開始寫程式碼。（這邊使用PHP來舉例）</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$DBNAME = &quot;test&quot;;</span><br><span class="line">$DBUSER = &quot;root&quot;;</span><br><span class="line">$DBPASSWD = &quot;root&quot;;</span><br><span class="line">$DBHOST = &quot;localhost&quot;;</span><br><span class="line">$userId = 1;</span><br><span class="line">$conn = mysqli_connect($DBHOST, $DBUSER, $DBPASSWD);</span><br><span class="line">if (empty($conn)) &#123;</span><br><span class="line">    print mysqli_error($conn);</span><br><span class="line">    die (&quot;無法連結資料庫&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (!mysqli_select_db($conn, $DBNAME)) &#123;</span><br><span class="line">    die (&quot;無法選擇資料庫&quot;);</span><br><span class="line">&#125;</span><br><span class="line">// 設定連線編碼</span><br><span class="line">mysqli_query($conn, &quot;SET NAMES &apos;utf8&apos;&quot;);</span><br><span class="line">$sql = &quot;select count(*) from `test` where user_id=&quot; . $userId;</span><br><span class="line">$count = mysqli_query($conn, $sql);</span><br><span class="line">$count = mysqli_fetch_array($count);</span><br><span class="line">if ($count[0] &gt;= 5) &#123;</span><br><span class="line">    die (&quot;折價券領取的次數超過五次&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$sql = &quot;INSERT INTO `test`.`test`(`user_id`, `amount_id`, `serial_number`) VALUES ($userId, 1, &apos;11111111111111111111111111111111&apos;);&quot;;</span><br><span class="line">$result = mysqli_query($conn, $sql);</span><br><span class="line">if ($result) &#123;</span><br><span class="line">    echo &apos;領取成功&apos;;</span><br><span class="line">    exit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">echo &apos;領取失敗&apos;;</span><br><span class="line">exit;</span><br></pre></td></tr></table></figure><p>到這邊，邏輯就寫完了，我們寫一個ajax來試著敲敲看，看看會發生什麼事情。</p><p><img src="1.png" alt></p><p><img src="2.png" alt></p><p>資料庫內顯示有六筆，為什麼會這樣？</p><p>因為我們先判斷後寫入的這個流程所導致，當請求幾乎是併發過來的時候，會先通過判斷是否超過五個，這時候我們資料尚未寫入，所以這邊會是成功的，但是就是因為成功，所以可能導致五個之後的請求也會通過這個判斷。</p><p>那我們怎麼做可以避免這個情況呢？</p><ol><li><strong>可以試著修改資料庫語句</strong><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSERT INTO test ( user_id, amount_id, serial_number )</span><br><span class="line">SELECT &apos;1&apos;, &apos;112&apos;, &apos;1123123&apos; FROM (SELECT count(user_id) as count FROM test WHERE user_id = 1) as temp where temp.count &lt; 5</span><br></pre></td></tr></table></figure></li></ol><p>把兩句判斷合併再一起就可以避免這個情況</p><ol start="2"><li>使用UNIQUE，不過因為我們這次的需求是可以領取五張，五張以上才不能領，所以這方法在這需求下無法使用</li></ol>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Code </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>一句更新在MySQL底層是如何運作的？</title>
       <link href="/2020/01/07/how-run-a-update-in-mysql/"/>
       <url>/2020/01/07/how-run-a-update-in-mysql/</url>
@@ -52,9 +71,9 @@
       
         <tags>
             
-            <tag> PHP </tag>
-            
             <tag> LeetCode </tag>
+            
+            <tag> PHP </tag>
             
         </tags>
       
@@ -92,11 +111,11 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
@@ -115,11 +134,11 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
@@ -138,9 +157,9 @@
       
         <tags>
             
-            <tag> PHP </tag>
-            
             <tag> LeetCode </tag>
+            
+            <tag> PHP </tag>
             
         </tags>
       
@@ -159,11 +178,11 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
@@ -182,9 +201,9 @@
       
         <tags>
             
-            <tag> PHP </tag>
-            
             <tag> LeetCode </tag>
+            
+            <tag> PHP </tag>
             
         </tags>
       
