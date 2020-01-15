@@ -8,7 +8,7 @@
       <link href="/2020/01/15/%E5%9C%A8Mac%E7%92%B0%E5%A2%83%E4%B8%8B%E7%9A%84MAMP%E5%AE%89%E8%A3%9DPHP%E6%93%B4%E5%B1%95/"/>
       <url>/2020/01/15/%E5%9C%A8Mac%E7%92%B0%E5%A2%83%E4%B8%8B%E7%9A%84MAMP%E5%AE%89%E8%A3%9DPHP%E6%93%B4%E5%B1%95/</url>
       
-        <content type="html"><![CDATA[<p>今天要準備的東西有</p><ul><li>MAMP （PHP 7.3.7）</li><li>State 2.0.3</li><li>XCode</li></ul><h2 id="安裝步驟"><a class="header-anchor" href="#安裝步驟"></a>安裝步驟</h2><p>先把stats下載下來並且解壓縮</p><p><img src="1.png" alt></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget https://pecl.php.net/get/stats-2.0.3.tgz</span><br><span class="line">$ tar zxvf stats-2.0.3.tgz</span><br></pre></td></tr></table></figure><p>之後切換到已經解壓縮好的資料夾內</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd stats-2.0.3</span><br></pre></td></tr></table></figure><p>這時候要使用phpize</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ /Applications/MAMP/bin/php/php7.3.7/bin/phpize</span><br></pre></td></tr></table></figure><p>之後使用MAMP內的php7.3.7的php-config執行configure<br>然後直接執行 make &amp;&amp; make install 就可以編譯完成</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ./configure --with-php-config=/Applications/MAMP/bin/php/php7.3.7/bin/php-config</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure><p>之後直接在php.ini內增加</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">extension=stats.so</span><br></pre></td></tr></table></figure><p>然後重啟MAMP內的Apache就可以囉</p><p><img src="2.jpg" alt></p><p>其實大部分PHP的擴展安裝方法，都是差不多這樣的。所以以後如果有其他擴展需要安裝，不妨參考看看這些步驟。</p><h2 id="如果你遇到了以下問題"><a class="header-anchor" href="#如果你遇到了以下問題"></a>如果你遇到了以下問題</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</span><br></pre></td></tr></table></figure><p>請執行以下指令</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ xcode-select --install</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<p>今天要準備的東西有</p><ul><li>MAMP （PHP 7.3.7）</li><li>Stats 2.0.3</li><li>XCode</li></ul><h2 id="安裝步驟"><a class="header-anchor" href="#安裝步驟"></a>安裝步驟</h2><p>先把stats下載下來並且解壓縮</p><p><img src="1.png" alt></p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ wget https://pecl.php.net/get/stats-2.0.3.tgz</span><br><span class="line">$ tar zxvf stats-2.0.3.tgz</span><br></pre></td></tr></table></figure><p>之後切換到已經解壓縮好的資料夾內</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ cd stats-2.0.3</span><br></pre></td></tr></table></figure><p>這時候要使用phpize</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ /Applications/MAMP/bin/php/php7.3.7/bin/phpize</span><br></pre></td></tr></table></figure><p>之後使用MAMP內的php7.3.7的php-config執行configure<br>然後直接執行 make &amp;&amp; make install 就可以編譯完成</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ./configure --with-php-config=/Applications/MAMP/bin/php/php7.3.7/bin/php-config</span><br><span class="line">$ make &amp;&amp; make install</span><br></pre></td></tr></table></figure><p>之後直接在php.ini內增加</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">extension=stats.so</span><br></pre></td></tr></table></figure><p>然後重啟MAMP內的Apache就可以囉</p><p><img src="2.jpg" alt></p><p>其實大部分PHP的擴展安裝方法，都是差不多這樣的。所以以後如果有其他擴展需要安裝，不妨參考看看這些步驟。</p><h2 id="如果你遇到了以下問題"><a class="header-anchor" href="#如果你遇到了以下問題"></a>如果你遇到了以下問題</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun</span><br></pre></td></tr></table></figure><p>請執行以下指令</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ xcode-select --install</span><br></pre></td></tr></table></figure>]]></content>
       
       
       
@@ -90,9 +90,9 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> PHP </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
@@ -130,11 +130,11 @@
       
         <tags>
             
+            <tag> LeetCode </tag>
+            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
-            
-            <tag> LeetCode </tag>
             
         </tags>
       
@@ -153,11 +153,11 @@
       
         <tags>
             
+            <tag> LeetCode </tag>
+            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
-            
-            <tag> LeetCode </tag>
             
         </tags>
       
@@ -176,9 +176,9 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> PHP </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
@@ -197,11 +197,11 @@
       
         <tags>
             
+            <tag> LeetCode </tag>
+            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
-            
-            <tag> LeetCode </tag>
             
         </tags>
       
@@ -220,9 +220,9 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> PHP </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
