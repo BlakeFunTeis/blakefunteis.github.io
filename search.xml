@@ -4,13 +4,21 @@
   
     
     <entry>
-      <title>Introduction-and-Practice-React-Day-2</title>
+      <title>「20天衝刺React」Day2.學習基礎ES6（一）</title>
       <link href="/2020/01/18/Introduction-and-Practice-React-Day-2/"/>
       <url>/2020/01/18/Introduction-and-Practice-React-Day-2/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<blockquote><p>ECMAScript是一種由Ecma國際（前身為歐洲電腦製造商協會）在標準ECMA-262中定義的手稿語言規範。這種語言在全球資訊網上應用廣泛，它往往被稱為JavaScript或JScript，但實際上後兩者是ECMA-262標準的實現和擴充。 - 維基百科</p></blockquote><h2 id="ES6-新特性"><a class="header-anchor" href="#ES6-新特性"></a>ES6 新特性</h2><p>ES6的目標是使JavaScript可以開發更複雜的大型應用，並成為企業級開發語言。</p><p>ES6中新增了let和const這兩種用來宣告的關鍵字，我們來試試看他們與我們以前常用的var有什麼不同。</p><h3 id="let"><a class="header-anchor" href="#let"></a>let</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">let ttt = 123;</span><br><span class="line">console.log(ttt);</span><br></pre></td></tr></table></figure><p>let跟var的差別是var在宣告時會把自己提升到程式頂端。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">console.log(qqq);</span><br><span class="line">var qqq;</span><br></pre></td></tr></table></figure><p>這樣用var宣告，他不會報錯，但是如果換成let就會報錯。</p><h3 id="const"><a class="header-anchor" href="#const"></a>const</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const test = &apos;test&apos;</span><br></pre></td></tr></table></figure><p>const比較特殊的是如果是「值」的宣告，那麼他在後面就不能再改變，但是如果是陣列或物件，那麼陣列和物件內的值還是可以做改變，這是因為const的宣告常數是指向該物件或陣列的記憶體位置，只要記憶體位置不變，那麼就不會錯誤。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const test1 = &#123;&#125;;</span><br><span class="line">test1.example = 123;</span><br><span class="line">console.log(test1);</span><br><span class="line"></span><br><span class="line">test1 = &#123;&#125;; //error</span><br></pre></td></tr></table></figure><h3 id="展開運算子"><a class="header-anchor" href="#展開運算子"></a>展開運算子</h3><p>不知道各位有沒有看過 「…var1」 這種類型的用法呢？其實這叫 Spread，他的作用就是在陣列或物件前面加上…他會展開陣列或物件內的值</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const example1 = [1, 2, 3]</span><br><span class="line">const example2 = [...example1, 4, 5]</span><br><span class="line">console.log(example2)</span><br><span class="line">console.log(...example2)</span><br><span class="line"></span><br><span class="line">[Log] [1, 2, 3, 4, 5] (5)</span><br><span class="line">[Log] 1 – 2 – 3 – 4 – 5</span><br></pre></td></tr></table></figure><h3 id="定義函數"><a class="header-anchor" href="#定義函數"></a>定義函數</h3><p>在ES6中，我們可以使用 =&gt; 來定義函數，下面來看看ES5和ES6中定義函數的差別。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5</span><br><span class="line">var example = function (text1, text2) &#123;</span><br><span class="line">    console.log(text1 + text2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//ES6</span><br><span class="line">var example = (text1, text2) =&gt; &#123;console.log(text1 + text2)&#125;</span><br></pre></td></tr></table></figure><p>同時，大括弧內所指的「this」會使用外面一層的「this」。</p><h3 id="模組匯入與匯出"><a class="header-anchor" href="#模組匯入與匯出"></a>模組匯入與匯出</h3><p>匯出模組</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export var example = &apos;test&apos;;</span><br><span class="line">export function example2() &#123;console.log(&apos;Hello&apos;)&#125;</span><br></pre></td></tr></table></figure><p>匯入模組</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import example3 from example3</span><br></pre></td></tr></table></figure>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> React </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
       
     </entry>
     
