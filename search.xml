@@ -4,7 +4,28 @@
   
     
     <entry>
-      <title>「20天衝刺React」Day2.學習基礎ES6（一）</title>
+      <title>「React學習之路」Day3.學習基礎ES6（三）</title>
+      <link href="/2020/01/19/Introduction-and-Practice-React-Day-3/"/>
+      <url>/2020/01/19/Introduction-and-Practice-React-Day-3/</url>
+      
+        <content type="html"><![CDATA[<h3 id="定義類別一Class"><a class="header-anchor" href="#定義類別一Class"></a>定義類別一Class</h3><p>在過去JavaScript就有一些類似於Class的語法，為什麼說類似？因為JavaScript中並沒有Class的概念。像是new或者instanceof的功能都是藉由動態物件所模擬出來的。</p><p>在ES6出現以前，都是藉由建構式來作為類別，之後透過new來產生實例。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function example(text) &#123;</span><br><span class="line">    this.text = text;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">example.prototype.run = function() &#123;</span><br><span class="line">    console.log(&apos;Go !&apos; + this.text)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var test = new example(&apos;Pokemon&apos;);</span><br><span class="line">test.run();</span><br></pre></td></tr></table></figure><p>上下兩個語法做的事情，其實都是一樣的，只是很明顯的下面這段ES6的語法更像物件導向的語法方式。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class example4 &#123;</span><br><span class="line">    constructor(text) &#123;</span><br><span class="line">        this.text = &apos;test&apos;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    run() &#123;</span><br><span class="line">        console.log(&quot;Go!&quot; + this.text)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const test44 = new example4(&apos;Pokemon&apos;);</span><br><span class="line">test44.run();</span><br></pre></td></tr></table></figure><h3 id="Getter和Setter"><a class="header-anchor" href="#Getter和Setter"></a>Getter和Setter</h3><p>在ES6內的Class也是有Getter和Setter的方法</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class example &#123;</span><br><span class="line">    constructor() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    set text(test) &#123;</span><br><span class="line">        console.log(&quot;Setter!  &quot; + test)</span><br><span class="line">        this.test = text;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    get text() &#123;</span><br><span class="line">        console.log(&quot;Getter!  &quot; + this.test)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const test = new example();</span><br><span class="line">test.text = &apos;123123&apos;</span><br></pre></td></tr></table></figure><p>比較需要注意的是setter的名字如果跟內部宣告的變數名字相同的話，會造成無窮迴圈的狀況，所以這點要特別注意。如果是為了辨別，那麼可以在變數前面加 「 _ 」，例如 _text。</p><h3 id="繼承"><a class="header-anchor" href="#繼承"></a>繼承</h3><p>ES6中的Class也有extends關鍵字來實作類別繼承這項功能，但內部實作的原理還是基於原型鏈完成的。繼承父類別的子類別必須在constructor中呼叫「super」方法，「super」方法其實就是父類別的constructor方法。</p><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class example &#123;</span><br><span class="line">    constructor(text) &#123;</span><br><span class="line">        this.text = text;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class example2 extends example &#123;</span><br><span class="line">    constructor(text) &#123;</span><br><span class="line">        super(text);</span><br><span class="line">        console.log(this.text)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const test = new example2(123);</span><br></pre></td></tr></table></figure><p>比較需要注意的是子類別並沒有自己的this物件，所以如果在super之前使用this就會報錯。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> React </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>「React學習之路」Day2.學習基礎ES6（一）</title>
       <link href="/2020/01/18/Introduction-and-Practice-React-Day-2/"/>
       <url>/2020/01/18/Introduction-and-Practice-React-Day-2/</url>
       
@@ -25,7 +46,7 @@
     
     
     <entry>
-      <title>「20天衝刺React」Day1.從JavaScript出發</title>
+      <title>「React學習之路」Day1.從JavaScript出發</title>
       <link href="/2020/01/16/Introduction-and-Practice-React-Day-1/"/>
       <url>/2020/01/16/Introduction-and-Practice-React-Day-1/</url>
       
@@ -132,9 +153,9 @@
       
         <tags>
             
-            <tag> PHP </tag>
-            
             <tag> LeetCode </tag>
+            
+            <tag> PHP </tag>
             
         </tags>
       
@@ -172,11 +193,11 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
@@ -195,11 +216,11 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
@@ -218,9 +239,9 @@
       
         <tags>
             
-            <tag> PHP </tag>
-            
             <tag> LeetCode </tag>
+            
+            <tag> PHP </tag>
             
         </tags>
       
@@ -239,11 +260,11 @@
       
         <tags>
             
-            <tag> LeetCode </tag>
-            
             <tag> MySQL </tag>
             
             <tag> Database </tag>
+            
+            <tag> LeetCode </tag>
             
         </tags>
       
@@ -262,9 +283,9 @@
       
         <tags>
             
-            <tag> PHP </tag>
-            
             <tag> LeetCode </tag>
+            
+            <tag> PHP </tag>
             
         </tags>
       
